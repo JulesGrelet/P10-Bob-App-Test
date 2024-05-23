@@ -51,17 +51,17 @@ jobs:
           cache-dependency-path: '**/package-lock.json'
       - name: Install Node & Angular dependencies
         run: npm install
-      - name: Install Chrome Browser
-        uses: browser-actions/setup-chrome@v1
-        with:
-          chrome-version: latest
-      - name: Install Chrome for Testing and its driver
-        run: |
-          npm i puppeteer
-          npx @puppeteer/browsers install chrome@stable
+      #- name: Install Chrome Browser
+        #uses: browser-actions/setup-chrome@v1
+        #with:
+          #chrome-version: latest
+      #- name: Install Chrome for Testing and its driver
+        #run: |
+          #npm i puppeteer
+          #npx @puppeteer/browsers install chrome@stable
       - name: Run tests with Node & Angular
         run:
-          npm run test
+          npm run test --no-watch --no-progress --browsers=Chrome
           #--watch=false --browsers=ChromeHeadless
           #--no-watch --no-progress --browsers=ChromeHeadless
 
