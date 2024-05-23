@@ -60,10 +60,11 @@ jobs:
           #npm i puppeteer
           #npx @puppeteer/browsers install chrome@stable
       - name: Run tests with Node & Angular
-        run:
-          npm run test --no-watch --no-progress --browsers=ChromeHeadless
-          #--watch=false --browsers=ChromeHeadless
-          #--no-watch --no-progress --browsers=ChromeHeadless
+        run: |
+          npm run test --no-watch --no-progress --browsers=ChromeHeadlessCI
+          & npx wait-on http://localhost:9876
+        #--watch=false --browsers=ChromeHeadless
+        #--no-watch --no-progress --browsers=ChromeHeadless
 
   test-coverage:
     name: Tests Coverage
