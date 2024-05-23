@@ -8,7 +8,7 @@ on:
 
 permissions:
   pull-requests: read # allows SonarCloud to decorate PRs with analysis results
-  contents: write
+  #contents: write
 
 defaults:
   run:
@@ -74,7 +74,7 @@ jobs:
         run: npm install
       - name: Generate tests coverage with Karma (report in "front/coverage/bobapp/")
         run:
-          npm run test -- --code-coverage
+          npm run test -- --code-coverage --no-watch
           #--no-watch --no-progress --browsers=ChromeHeadless
           #--code-coverage
   
