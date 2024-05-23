@@ -51,6 +51,10 @@ jobs:
           cache-dependency-path: '**/package-lock.json'
       - name: Install Node & Angular dependencies
         run: npm install
+      - name: Install Chrome Browser
+        uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: latest
       - name: Run tests with Node & Angular
         run:
           npm run test --watch=false --browsers=ChromeHeadless
