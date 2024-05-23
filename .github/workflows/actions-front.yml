@@ -74,8 +74,8 @@ jobs:
         run: npm install
       - name: Generate tests coverage with Karma (report in "front/coverage/bobapp/")
         run:
-          npm run test --code-coverage
-          --no-watch --no-progress --browsers=ChromeHeadless
+          npm run test -- --code-coverage
+          --no-watch --browsers=ChromeHeadless
   
   #quality:
   #  name: Code Quality Analysis
