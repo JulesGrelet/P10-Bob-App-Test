@@ -22,7 +22,7 @@ jobs:
         with:
           node-version: '18.16.0'
           cache: 'npm'
-          cache-dependency-path: '../../front/package-lock.json'
+          cache-dependency-path: '/front/package-lock.json'
       - name: Install Node & Angular dependencies
         run: npm install
       - name: Try to start app with Node & Angular
