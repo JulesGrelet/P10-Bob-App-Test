@@ -31,10 +31,10 @@ jobs:
         run: npm install
       - name: Try to start app with Node & Angular
         run: |
-          npm run start &
+          npm start &
           npx wait-on http://localhost:4200
       - name: Build with Node & Angular
-        run: npm run build
+        run: npm build
 
   test:
     name: Tests
@@ -53,7 +53,7 @@ jobs:
         run: npm install
       - name: Run tests with Node & Angular
         run:
-          npm run test
+          npm test --watch=false --browsers=ChromeHeadless
           #--no-watch --no-progress --browsers=ChromeHeadless
 
   test-coverage:
@@ -73,7 +73,7 @@ jobs:
         run: npm install
       - name: Generate tests coverage with Karma (report in "front/coverage/bobapp/")
         run:
-          npm run test
+          npm test
           --no-watch --no-progress --browsers=ChromeHeadless
           --code-coverage
   
