@@ -73,8 +73,7 @@ jobs:
       - name: Install Node & Angular dependencies
         run: npm install
       - name: Generate tests coverage with Karma (report in "front/coverage/bobapp/")
-        run: nyc --reporter=lcov
-      - run: npm run test -- --code-coverage
+        run: npm run test -- --code-coverage
           --no-watch --no-progress --browsers=ChromeHeadless
       - name: Coveralls
         uses: coverallsapp/github-action@master

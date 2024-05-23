@@ -28,9 +28,9 @@ module.exports = function (config) {
       dir: require('path').join(__dirname, './coverage/bobapp'),
       subdir: '.',
       reporters: [
+        { type: 'lcovonly' },
         { type: 'html' },
-        { type: 'text-summary' },
-        { type: 'lcovonly' }
+        { type: 'text-summary' }
       ],
       /*
       Will be used soon to improve test validation.
