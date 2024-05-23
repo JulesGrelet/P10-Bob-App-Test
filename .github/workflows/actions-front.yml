@@ -39,7 +39,7 @@ jobs:
   test:
     name: Tests
     runs-on: ubuntu-20.04
-    needs: build
+    #needs: build
     steps:
       - name: Check out the repo
         uses: actions/checkout@v4
