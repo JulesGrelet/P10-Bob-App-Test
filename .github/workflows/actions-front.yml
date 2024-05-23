@@ -73,10 +73,9 @@ jobs:
       - name: Install Node & Angular dependencies
         run: npm install
       - name: Generate tests coverage with Karma (report in "front/coverage/bobapp/")
-        run: npm run test -- --code-coverage
+        run:
+          npm run test -- --code-coverage
           --no-watch --no-progress --browsers=ChromeHeadless
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   
   #quality:
   #  name: Code Quality Analysis
