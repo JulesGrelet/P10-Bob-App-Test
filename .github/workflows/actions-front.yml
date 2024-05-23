@@ -61,7 +61,7 @@ jobs:
           #npx @puppeteer/browsers install chrome@stable
       - name: Run tests with Node & Angular
         run:
-          npm run test --no-watch --no-progress --browsers=Chrome
+          npm run test --no-watch --no-progress --browsers=ChromeHeadless
           #--watch=false --browsers=ChromeHeadless
           #--no-watch --no-progress --browsers=ChromeHeadless
 
