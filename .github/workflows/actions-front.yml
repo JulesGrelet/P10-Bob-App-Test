@@ -49,6 +49,8 @@ jobs:
           node-version: '18.16.0'
           cache: 'npm'
           cache-dependency-path: '**/package-lock.json'
+      - name: Install Node & Angular dependencies
+        run: npm install
       - name: Run tests with Node & Angular
         run:
           npm run test
@@ -67,6 +69,8 @@ jobs:
           node-version: '18.16.0'
           cache: 'npm'
           cache-dependency-path: '**/package-lock.json'
+      - name: Install Node & Angular dependencies
+        run: npm install
       - name: Generate tests coverage with Karma (report in "front/coverage/bobapp/")
         run:
           npm run test
