@@ -1,0 +1,114 @@
+name: CI of Front-End
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+permissions:
+  pull-requests: read # allows SonarCloud to decorate PRs with analysis results
+
+jobs:
+
+  build:
+    name: Start & Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+      - name: Set up Node 18
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18.16.0'
+          cache: 'npm'
+          cache-dependency-path: 'package-lock.json'
+      - name: Install Node & Angular dependencies
+        run: npm install
+      - name: Try to start app with Node & Angular
+        run: npm run start
+      - name: Build with Node & Angular
+        run: npm run build
+
+  test:
+    name: Tests
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+      - name: Set up Node 18
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18.16.0'
+          cache: 'npm'
+          cache-dependency-path: 'package-lock.json'
+      - name: Run tests with Node & Angular
+        run:
+          npm run test
+          --no-watch --no-progress --browsers=ChromeHeadless
+
+  test-coverage:
+    name: Tests Coverage
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+      - name: Set up Node 18
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18.16.0'
+          cache: 'npm'
+          cache-dependency-path: 'package-lock.json'
+      - name: Generate tests coverage with Karma (report in "front/coverage/bobapp/")
+        run:
+          npm run test
+          --no-watch --no-progress --browsers=ChromeHeadless
+          --code-coverage
+  
+  quality:
+    name: Code Quality Analysis
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Check out the repo & improve relevancy of analysis
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+      - name: Analyze with SonarCloud
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+  package:
+    name: Packaging
+    runs-on: ubuntu-latest
+    needs: quality
+    permissions:
+      packages: write
+      contents: read
+      attestations: write
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+      - name: Log in to Docker Hub
+        uses: docker/login-action@f4ef78c080cd8ba55a85445d5b36e214a81df20a
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
+        with:
+          images: julesgrelet/bobapp-front
+      - name: Build and push Docker image
+        id: push
+        uses: docker/build-push-action@3b5e8027fcad23fda98b2e3ac259d8d67585f671
+        with:
+          context: .
+          file: ./front/Dockerfile
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}_1.${{ github.run_number }}.${{ github.run_attempt }}
+          labels: ${{ steps.meta.outputs.labels }}
