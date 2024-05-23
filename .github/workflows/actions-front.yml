@@ -60,7 +60,7 @@ jobs:
   test-coverage:
     name: Tests Coverage
     runs-on: ubuntu-latest
-    needs: test
+    #needs: test
     steps:
       - name: Check out the repo
         uses: actions/checkout@v4
@@ -74,9 +74,8 @@ jobs:
         run: npm install
       - name: Generate tests coverage with Karma (report in "front/coverage/bobapp/")
         run:
-          npm run test -- --code-coverage --no-watch
-          #--no-watch --no-progress --browsers=ChromeHeadless
-          #--code-coverage
+          npm run test -- --code-coverage
+          --no-watch --no-progress --browsers=ChromeHeadless
   
   #quality:
   #  name: Code Quality Analysis
