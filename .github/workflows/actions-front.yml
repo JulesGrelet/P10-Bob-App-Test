@@ -54,7 +54,7 @@ jobs:
       - name: Run tests with Node & Angular
         run:
           npm run test
-          --no-watch --no-progress --browsers=ChromeHeadless
+          #--no-watch --no-progress --browsers=ChromeHeadless
 
   test-coverage:
     name: Tests Coverage
