@@ -30,7 +30,9 @@ jobs:
       - name: Install Node & Angular dependencies
         run: npm install
       - name: Try to start app with Node & Angular
-        run: npm run start
+        run: |
+          npm run start &
+          npx wait-on http://localhost:4200
       - name: Build with Node & Angular
         run: npm run build
 
