@@ -63,6 +63,7 @@ jobs:
         run: |
           npm run test --no-watch --no-progress --browsers=ChromeHeadless
           & npx wait-on http://localhost:9876
+          & npx wait-on http://localhost:9876
         #--watch=false --browsers=ChromeHeadless
         #--no-watch --no-progress --browsers=ChromeHeadless
 
