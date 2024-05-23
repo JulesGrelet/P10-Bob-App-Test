@@ -24,6 +24,7 @@ jobs:
           cache: 'npm'
           cache-dependency-path: '**/package-lock.json'
       - name: Install Node & Angular dependencies
+        working-directory: front
         run: npm install
       - name: Try to start app with Node & Angular
         run: npm run start
