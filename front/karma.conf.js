@@ -31,14 +31,18 @@ module.exports = function (config) {
         { type: 'html' },
         { type: 'text-summary' }
       ],
-      /*check: {
+      /*
+      Will be used soon to improve test validation.
+      CI step of test will only be validated if rates (80%) are all reached.
+      check: {
         global: {
           statements: 80,
           branches: 80,
           functions: 80,
           lines: 80
         }
-      }*/
+      }
+      */
     },
     reporters: ['progress', 'kjhtml'],
     port: 9876,
