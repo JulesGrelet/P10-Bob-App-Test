@@ -20,9 +20,9 @@ jobs:
       - name: Set up Node 18
         uses: actions/setup-node@v4
         with:
-          node-version: '18.16.0'
+          node-version: 18.16.0
           cache: 'npm'
-          cache-dependency-path: '/front/README.md'
+          cache-dependency-path: /front/package-lock.json
       - name: Install Node & Angular dependencies
         run: npm install
       - name: Try to start app with Node & Angular
@@ -40,9 +40,9 @@ jobs:
       - name: Set up Node 18
         uses: actions/setup-node@v4
         with:
-          node-version: '18.16.0'
+          node-version: 18.16.0
           cache: 'npm'
-          cache-dependency-path: '/front/package-lock.json'
+          cache-dependency-path: /front/package-lock.json
       - name: Run tests with Node & Angular
         run:
           npm run test
@@ -58,9 +58,9 @@ jobs:
       - name: Set up Node 18
         uses: actions/setup-node@v4
         with:
-          node-version: '18.16.0'
+          node-version: 18.16.0
           cache: 'npm'
-          cache-dependency-path: '/front/package-lock.json'
+          cache-dependency-path: /front/package-lock.json
       - name: Generate tests coverage with Karma (report in "/front/coverage/bobapp/")
         run:
           npm run test
