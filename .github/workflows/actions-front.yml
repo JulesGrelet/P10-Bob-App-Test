@@ -76,6 +76,10 @@ jobs:
         run:
           npm run test -- --code-coverage
           --no-watch --no-progress --browsers=ChromeHeadless
+      - name: Coveralls
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
   
   #quality:
   #  name: Code Quality Analysis
