@@ -58,7 +58,7 @@ jobs:
 
   test-coverage:
     name: Tests Coverage
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     needs: test
     steps:
       - name: Check out the repo
