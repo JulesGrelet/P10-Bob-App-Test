@@ -77,21 +77,21 @@ jobs:
           npm run test -- --code-coverage
           --no-watch --no-progress --browsers=ChromeHeadless
   
-  #quality:
-  #  name: Code Quality Analysis
-  #  runs-on: ubuntu-latest
-  #  needs: test
-  #  steps:
-  #    - name: Check out the repo & improve relevancy of analysis
-  #      uses: actions/checkout@v4
-  #      with:
-  #        fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
-  #    - name: Analyze with SonarCloud
-  #      uses: SonarSource/sonarcloud-github-action@master
-  #      env:
-  #        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-  #        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-#
+  quality:
+    name: Code Quality Analysis
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Check out the repo & improve relevancy of analysis
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+      - name: Analyze with SonarCloud
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
   #package:
   #  name: Packaging
   #  runs-on: ubuntu-latest
