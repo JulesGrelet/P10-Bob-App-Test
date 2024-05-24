@@ -61,6 +61,8 @@ jobs:
     name: Tests Coverage
     runs-on: ubuntu-latest
     needs: test
+    permissions:
+      contents: write
     steps:
       - name: Check out the repo
         uses: actions/checkout@v4
@@ -112,13 +114,13 @@ jobs:
         id: meta
         uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
         with:
-          images: julesgrelet/bobapp-front
+          images: julesgrelet/bobapp-test-front
       - name: Build and push Docker image
         id: push
         uses: docker/build-push-action@3b5e8027fcad23fda98b2e3ac259d8d67585f671
         with:
           context: .
-          file: /front/Dockerfile
+          file: front/Dockerfile
           push: true
           tags: ${{ steps.meta.outputs.tags }}_1.${{ github.run_number }}.${{ github.run_attempt }}
           labels: ${{ steps.meta.outputs.labels }}
