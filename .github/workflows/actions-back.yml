@@ -52,7 +52,7 @@ jobs:
           cache: maven
       - name: Test with Maven
         run:
-          ./mvn test
+          mvn test
           -Dhttps.protocols=TLSv1.2
           -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=WARN
           -Dorg.slf4j.simpleLogger.showDateTime=true
@@ -78,7 +78,7 @@ jobs:
           name: unit-tests-jacoco
           path: target/
       - name: merge results
-        run: .\mvn jacoco:merge package jacoco:report verify -DskipTests=true
+        run: mvn jacoco:merge package jacoco:report verify -DskipTests=true
       - name: Upload jacoco coverage despite the check result
         if: ${{ always() }}
         uses: actions/upload-artifact@v2
