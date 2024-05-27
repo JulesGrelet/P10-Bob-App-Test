@@ -3,7 +3,7 @@ RUN mkdir -p \workspace
 WORKDIR \workspace
 COPY \back\pom.xml \workspace
 COPY \back\src\ \workspace\src\
-RUN \back\mvnw -B -f pom.xml clean package -DskipTests
+RUN /back/mvnw -B -f pom.xml clean package -DskipTests
 FROM openjdk:11-jdk-slim
 COPY --from=build \workspace\target\*.jar \back\app.jar
 EXPOSE 8080
