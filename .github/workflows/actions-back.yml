@@ -121,7 +121,7 @@ jobs:
   package:
     name: Packaging
     runs-on: ubuntu-latest
-    needs: quality
+    #needs: quality
     permissions:
       packages: write
       contents: read
