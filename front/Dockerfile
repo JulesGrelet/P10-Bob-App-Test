@@ -4,7 +4,8 @@ WORKDIR /usr/local/app
 COPY ./ /usr/local/app/
 
 RUN yarn
-RUN front/npm run build
+RUN npm install
+RUN npm run build
  
 FROM nginx:latest as production
 
