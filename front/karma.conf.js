@@ -25,7 +25,8 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, 'fronttt/coverage/bobapp'),
+      dir: require('path').join(__dirname, './coverage/bobapp'),
+      reports: ['html', 'text-summary'],
       subdir: '.',
       reporters: [
         { type: 'html' },

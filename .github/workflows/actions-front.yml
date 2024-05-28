@@ -60,7 +60,7 @@ jobs:
   test-coverage:
     name: Tests Coverage
     runs-on: ubuntu-latest
-    needs: test
+    #needs: test
     permissions:
       contents: write
     steps:
