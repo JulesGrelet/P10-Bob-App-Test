@@ -74,10 +74,12 @@ jobs:
           cache-dependency-path: front/package-lock.json
       - name: Install Node & Angular dependencies
         run: npm install
-      - name: Generate tests coverage with Karma (report in "front/coverage/bobapp/")
+      - name: Generate tests coverage (report in "front/coverage/bobapp/")
         run:
           npm run test -- --code-coverage
-          --no-watch --no-progress --browsers=ChromeHeadless
+        #run:
+         # npm run test -- --code-coverage
+          #--no-watch --no-progress --browsers=ChromeHeadless
 
   quality:
     name: Code Quality Analysis
