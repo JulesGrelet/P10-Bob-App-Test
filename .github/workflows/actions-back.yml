@@ -76,7 +76,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: unit-tests-jacoco
-          path: target/
+          path: back/target/
       - name: merge results
         run: mvn jacoco:merge package jacoco:report verify -DskipTests=true
       - name: Upload jacoco coverage despite the check result
@@ -84,7 +84,8 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: coverage-results-report
-          path: target/site/jacoco/
+          #path: back/target/site/jacoco/
+          path: back/target/
           if-no-files-found: error
 
   quality:
