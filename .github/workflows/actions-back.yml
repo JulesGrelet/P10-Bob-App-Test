@@ -84,8 +84,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: coverage-results-report
-          #path: back/target/site/jacoco/
-          path: back/target/
+          path: back/target/site/jacoco/
           if-no-files-found: error
 
   quality:
