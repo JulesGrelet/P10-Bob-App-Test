@@ -72,10 +72,11 @@ jobs:
           node-version: '18.16.0'
           cache: 'npm'
           cache-dependency-path: front/package-lock.json
-      - name: Install Node & Angular dependencies
-        run: npm install
+      #- name: Install Node & Angular dependencies
+       # run: npm install
       - name: Generate tests coverage with Karma (report in "front/coverage/bobapp/")
-        run:
+        run: |
+          npm install
           npm run test -- --code-coverage
           --no-watch --no-progress --browsers=ChromeHeadless
 
