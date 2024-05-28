@@ -76,7 +76,7 @@ jobs:
         run: npm install
       - name: Generate tests coverage (report in "front/coverage/bobapp/")
         run:
-          npm run test -- --code-coverage
+          npm run test -- --code-coverage --no-watch
         #run:
          # npm run test -- --code-coverage
           #--no-watch --no-progress --browsers=ChromeHeadless
