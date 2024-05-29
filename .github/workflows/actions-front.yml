@@ -78,6 +78,8 @@ jobs:
         run:
           npm run test -- --code-coverage
           --no-watch --no-progress --browsers=ChromeHeadless
+        env:
+          GITHUB_TOKEN: ${{ secrets.ACTIONS_GITHUB_TOKEN_CLASSIC }}
 
   quality:
     name: Code Quality Analysis
@@ -92,7 +94,7 @@ jobs:
         uses: SonarSource/sonarcloud-github-action@master
         env:
           #GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-          GITHUB_TOKEN: ${{ secrets.ACTIONS_GITHUB_TOKEN_CLASSICC }}
+          GITHUB_TOKEN: ${{ secrets.ACTIONS_GITHUB_TOKEN_CLASSIC }}
           SONAR_TOKEN: ${{ secrets.SONAR_FRONT_TOKEN }}
 
   package:
