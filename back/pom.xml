@@ -47,7 +47,7 @@
 				<configuration>
 					<fileSets>
 						<fileSet>
-							<directory>..</directory>
+							<directory>target/site/jacoco/</directory>
 							<include>**/target/*.exec</include>
 						</fileSet>
 					</fileSets>
