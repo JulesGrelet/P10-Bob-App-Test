@@ -61,7 +61,7 @@ jobs:
 
   test-coverage:
     name: Tests Coverage
-    #needs: test
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repo
@@ -74,8 +74,6 @@ jobs:
           cache: maven
       - name: Run tests and generate coverage with Maven & Jacoco
         run: mvn clean test
-          #mvn jacoco:merge package jacoco:report verify -DskipTests=true
-          #-Djacoco.destFile=back/target/site/jacoco/${project.artifactId}.exec
       - name: Upload jacoco coverage as artifact
         if: ${{ always() }}
         uses: actions/upload-artifact@v4
