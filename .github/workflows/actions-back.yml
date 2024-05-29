@@ -72,20 +72,20 @@ jobs:
           java-version: '11'
           distribution: 'temurin'
           cache: maven
-      - name: Set up Jacoco
-        uses: actions/download-artifact@v2
-        with:
-          name: unit-tests-jacoco
-          path: back/target/
       - name: merge results
         run: mvn jacoco:merge package jacoco:report verify -DskipTests=true
       - name: Upload jacoco coverage despite the check result
         if: ${{ always() }}
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: coverage-results-report
           path: back/target/site/jacoco/
           if-no-files-found: error
+      - name: Download report
+        uses: actions/download-artifact@v4
+        with:
+          name: coverage-results-report
+          path: back/target/site/jacoco/
 
   quality:
     runs-on: ubuntu-latest
