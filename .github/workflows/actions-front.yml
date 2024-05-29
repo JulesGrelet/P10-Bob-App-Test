@@ -74,11 +74,11 @@ jobs:
           cache-dependency-path: front/package-lock.json
       - name: Install Node & Angular dependencies
         run: npm install
-      - name: Set up coverage
-        uses: actions/download-artifact@v4
-        with:
-          name: front-tests-coverage
-          path: front/
+      #- name: Set up coverage
+       # uses: actions/download-artifact@v4
+        #with:
+         # name: front-tests-coverage
+          #path: front/
       - name: Generate tests coverage (report in "front/coverage/bobapp/")
         run:
           npm run test -- --code-coverage
