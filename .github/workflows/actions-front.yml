@@ -74,13 +74,10 @@ jobs:
           cache-dependency-path: front/package-lock.json
       - name: Install Node & Angular dependencies
         run: npm install
-      - run: npm ci
       - name: Generate tests coverage (report in "front/coverage/bobapp/")
         run:
-          npm run test -- --code-coverage --no-watch
-        #run:
-         # npm run test -- --code-coverage
-          #--no-watch --no-progress --browsers=ChromeHeadless
+          npm run test -- --code-coverage
+          --no-watch --no-progress --browsers=ChromeHeadless
 
   quality:
     name: Code Quality Analysis
@@ -94,7 +91,8 @@ jobs:
       - name: Analyze with SonarCloud
         uses: SonarSource/sonarcloud-github-action@master
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          #GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          GITHUB_TOKEN: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_FRONT_TOKEN }}
 
   package:
