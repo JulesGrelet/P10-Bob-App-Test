@@ -90,9 +90,9 @@ jobs:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
       - name: Analyze with SonarCloud
         uses: SonarSource/sonarcloud-github-action@master
-        #env:
+        env:
           #GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-          #SONAR_TOKEN: ${{ secrets.SONAR_FRONT_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_FRONT_TOKEN }}
 
   package:
     name: Packaging
