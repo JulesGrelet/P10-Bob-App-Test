@@ -44,14 +44,6 @@
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
 				<version>0.8.5</version>
-				<configuration>
-					<fileSets>
-						<fileSet>
-							<directory>target/site/jacoco/</directory>
-							<include>**/target/*.exec</include>
-						</fileSet>
-					</fileSets>
-				</configuration>
 				<executions>
 					<execution>
 						<goals>
