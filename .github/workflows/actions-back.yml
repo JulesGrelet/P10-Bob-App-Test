@@ -78,13 +78,13 @@ jobs:
         if: ${{ always() }}
         uses: actions/upload-artifact@v4
         with:
-          name: back-coverage-report
+          name: test-back-coverage-report
           path: back/target/site/jacoco/
           if-no-files-found: error
       - name: Download coverage report
         uses: actions/download-artifact@v4
         with:
-          name: back-coverage-report
+          name: test-back-coverage-report
           path: back/target/site/jacoco/
 
   quality:
